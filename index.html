@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simple Word Input</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 32px; max-width: 480px; margin: auto; }
+    input, button { font-size: 1rem; padding: 8px; }
+    #result { margin-top: 16px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Enter a word</h1>
+  <form id="wordForm">
+    <input type="text" id="wordInput" placeholder="Type one word" autocomplete="off" required />
+    <button type="submit">Submit</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    const form = document.getElementById('wordForm');
+    const input = document.getElementById('wordInput');
+    const result = document.getElementById('result');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const word = input.value.trim();
+      if (!word) {
+        result.textContent = 'Please type a word.';
+        return;
+      }
+      result.textContent = `You entered: ${word}`;
+      input.value = '';
+      input.focus();
+    });
+  </script>
+</body>
+</html>
